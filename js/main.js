@@ -1,10 +1,9 @@
-function xxx (number)
+function promocod (number)
 	{
 		if (typeof(number) !== "number")
 			{return("неверный тип данных")} 
-		else if(number/10000000 >= 1 && number/10000000 <10)
-			{console.log(number)}
-		else{return('неверное число')}//проверка, введено ли число и восьмизначное ли оно
+		else if(number/10000000 < 1 || number/10000000>9)
+			{return('неверное число')}//проверка, введено ли число и восьмизначное ли оно
 
 		let arr = [];
 		for (let i = 8; i>0; i--)
@@ -22,7 +21,7 @@ function xxx (number)
 			if(evenodd[i] == 1){odd.push(i)}
 			else{even.push(i)}
 		}
-		console.log(odd)
+		
 		
 		let flag = 0;//единица при рядом стоящих нечетных
 		let flag1 = 2;// плюс единица при переходе
@@ -33,7 +32,7 @@ function xxx (number)
 		{
 			if(odd[i]-odd[i-1] == 1)//если соседние элементы нечетного массива отличаются на единицу(нечетные стоят подряд)
 			{
-				console.log(flag, flag1)
+				
 				if(diff1 === undefined) {diff1 = (arr[odd[i]]-arr[odd[i-1]])}//если еще не было сравнения впаре нечетных - результат в diff1
 				else if (diff2 === undefined) {diff2 = (arr[odd[i]]-arr[odd[i-1]])}//если было и diff1 не undefined, а diff2 undefined - в diff2
 				
@@ -48,7 +47,7 @@ function xxx (number)
 				else{flag1 = 0}//если нечетная пара первая
 					
 				
-				console.log(flag, flag1)
+				
 				/*	console.log(odd[i]-odd[i-1]);
 					console.log('flag ' + flag);
 					console.log('flag1  ' + flag1);*/
@@ -71,8 +70,8 @@ function xxx (number)
 			}
 		}
 
-		if (sumeven>sumodd){return'0'}
-		else{return console.log("промокод не корректен")}
+		if (sumeven>sumodd){return'100'}
+		else{return console.log("0")}
 
 	}
 
