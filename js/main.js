@@ -1,5 +1,4 @@
-function promocod (number)
-	{
+function promocod (number){
 		if (typeof (number) !== "number") {
 			return ("неверный тип данных")
 		} else if (number / 10000000 < 1 || number / 10000000 > 9) {
@@ -7,20 +6,18 @@ function promocod (number)
 		} 
 
 		let arr = [];
-		for (let i = 8 ; i > 0 ; i--)
-		{
+		for (let i = 8 ; i > 0 ; i--){
 			arr.push(Math.floor(number % Math.pow(10,i) / Math.pow(10, (i - 1)))); // разбиваем число на массив цифр
 			
 		}
 
 		
-		let evenOdd = arr.map(item => item % 2)
+		let evenOdd = arr.map(item => item % 2);
 		let even = [];
 		let odd = [];
-		for (i = 0; i < 8 ; i++)
-		{
-			if (evenOdd[i] == 1) { odd.push(i) }
-			else { even.push(i) }
+		for (i = 0; i < 8 ; i++) {
+			if (evenOdd[i] == 1) { odd.push(i)
+			} else { even.push(i) }
 		}
 		
 		
@@ -29,8 +26,7 @@ function promocod (number)
 		let diff1;
 		let diff2;
 		
-		for (let i = 1; i < odd.length; i++)
-		{
+		for (let i = 1; i < odd.length; i++) {
 			if (odd[i] - odd[i - 1] == 1) {                  // если соседние элементы нечетного массива отличаются на единицу(нечетные стоят подряд)
 				if (diff1 === undefined) {
 					diff1 = (arr[odd[i]] - arr[odd[i - 1]]) // если еще не было сравнения впаре нечетных - результат в diff1
@@ -39,13 +35,14 @@ function promocod (number)
 				} 
 				
 				flag = 1;
-				if ((flag == flag1) && (odd[i] - odd[i - 2] !== 2)) {// если число не является третим нечетным
+				if ((flag == flag1) && (odd[i] - odd[i - 2] !== 2)) { // если число не является третим нечетным
 					if (diff1 > 0 && diff2 > 0) {
-						return console.log('2000')
-					}else {
-					return console.log('1000');}							      // (засчитываем левые пары, если три нечетных подряд)
-			} else if (odd[i] - odd[i - 2] == 2){
-				flag1 = 2                          // третье нечетное число не считается
+						return console.log('2000');
+					} else {
+					return console.log('1000');
+					}							      // (засчитываем левые пары, если три нечетных подряд)
+			} else if (odd[i] - odd[i - 2] == 2) {
+				flag1 = 2;                          // третье нечетное число не считается
 			} else { flag1 = 0 }                    // если нечетная пара первая
 			}
 
@@ -55,8 +52,7 @@ function promocod (number)
 		}
 		let sumOdd = 0;
 		let sumEven = 0;
-		for (i = 0; i < arr.length; i++)
-		{
+		for (i = 0; i < arr.length; i++) {
 			if (arr[i] % 2 == 1) {
 				sumOdd = sumOdd + arr[i]
 			} else {
@@ -65,7 +61,7 @@ function promocod (number)
 		}
 
 		if (sumEven > sumOdd) { 
-			return'100' 
+			return '100' 
 		} else {
 			return console.log("0")
 		}
